@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>时序工坊 · Timing Studio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tabs.css">
+  <link rel="stylesheet" href="annotation.css">
+  <link rel="stylesheet" href="file-drop.css">
+  <link rel="stylesheet" href="view-switch.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">▤</span><div><strong>时序工坊</strong><small>Timing Studio</small></div></div>
+    <div class="top-actions">
+      <button id="newBtn" title="新建画布">新建画布</button><button id="openBtn" title="也可拖入 .wavejson 或 .json 文件，新建画布">打开 JSON / WaveJSON</button><input id="fileInput" type="file" accept=".json,.wavejson,application/json" multiple hidden>
+      <button id="saveBtn">保存 JSON</button><button id="svgBtn">导出 SVG</button><button id="pngBtn">导出 PNG</button>
+    </div>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="section-title">绘制工具</div>
+      <div class="tool-grid" id="tools">
+        <button data-tool="select" class="active">↖ 选择 / 拖边沿 · S</button>
+        <button data-tool="0">▁ 低电平 · 2</button><button data-tool="1">▔ 高电平 · 1</button>
+        <button data-tool="x">▧ 未知 · X</button><button data-tool="z">┄ 高阻 · Z</button>
+        <button data-tool="=">◇ 总线 · B</button>
+        <button data-tool="annotation">▣ 独立批注 · C</button>
+        <button data-tool="busBreak">⋈ 总线分界 · F</button>
+      </div>
+      <p class="hint">总线的一段可以跨多个时钟，选中后填写整段值。按 F 点击格边界分段，再分别设值。按 S 选择或拖边沿；拖选区间可局部设值。按住信号名上下拖动可调整行顺序。</p>
+      <div class="section-title">添加信号</div>
+      <div class="add-grid"><button id="addClock">＋ 时钟</button><button id="addSignal">＋ 信号</button><button id="addBus">＋ 总线</button></div>
+      <div class="section-title">选中项属性</div>
+      <div id="properties" class="properties"><p class="muted">点击信号名或波形段以编辑属性。</p></div>
+      <div class="section-title">操作</div>
+      <div class="action-grid"><button id="undoBtn">↶ 撤销</button><button id="redoBtn">↷ 重做</button><button id="moveUpBtn">↑ 上移</button><button id="moveDownBtn">↓ 下移</button><button id="deleteBtn">删除行</button></div>
+      <p class="hint">画布快捷键：Ctrl+C／V／X 复制、粘贴、剪切；Delete／Backspace 删除；Ctrl+Z／Y 撤销、重做。代码和属性输入框保留原生快捷键。</p>
+    </aside>
+    <section class="workspace">
+      <div class="tabs-bar"><div id="tabList" class="tab-list" role="tablist" aria-label="画布标签"></div><button id="addTabBtn" class="add-tab" title="新建画布" aria-label="新建画布">＋</button></div>
+      <div class="canvas-toolbar"><div class="canvas-heading"><label for="canvasName">画布名称</label><input id="canvasName" type="text" maxlength="80" aria-label="画布名称"><span id="status">就绪</span></div><div class="editor-controls"><div class="view-controls"><label>周期数 <input id="cyclesInput" type="number" min="2" max="256" value="16"></label><button id="zoomOut">−</button><span id="zoomLabel">100%</span><button id="zoomIn">＋</button></div><div class="view-switch" role="group" aria-label="编辑界面"><button id="canvasViewBtn" type="button" aria-pressed="true">画布</button><button id="codeViewBtn" type="button" aria-pressed="false">代码</button></div></div></div>
+      <div id="canvasScroll" class="canvas-scroll"><svg id="diagram" tabindex="0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="时序图"></svg></div>
+      <div class="canvas-footer"><span>每格表示一个时间单位；竖线为采样边界</span><span id="selectionInfo">未选择</span></div>
+    <aside class="code-panel">
+      <div class="code-head"><div><strong>WaveDrom 代码</strong><small>当前画布的 WaveJSON · 切回画布时自动应用有效代码</small></div><button id="applyBtn" class="primary">应用并查看画布</button></div>
+      <textarea id="code" spellcheck="false" aria-label="WaveDrom WaveJSON 代码"></textarea>
+      <div id="codeMessage" class="code-message">画布修改会自动更新代码。手动改完后点击“应用代码”。</div>
+      <div class="code-help"><strong>快速语法</strong><p><code>0 1 x z</code> 表示电平；<code>.</code> 延续状态；<code>=</code> 为总线；<code>p/n</code> 为时钟。批注保存在 <code>_timingStudio.annotations</code>。</p></div>
+    </aside>
+    </section>
+  </main>
+  <div id="fileDropHint" class="file-drop-hint" aria-hidden="true"><strong>松开文件，打开为新画布</strong><span>支持 .wavejson 和 .json；每个文件新建一个标签</span></div>
+  <script src="app.js"></script>
+</body>
+</html>

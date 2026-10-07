@@ -1,0 +1,39 @@
+{
+  "name": "timing-studio",
+  "productName": "TimingStudio",
+  "version": "1.3.1",
+  "description": "本地时序图编辑器",
+  "private": true,
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check app.js && node --check electron-main.js",
+    "test": "npm run check && node tests/test-bus.cjs && node tests/test-file-drop.cjs && node tests/test-smoke.cjs",
+    "dist:win": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "44.6.0",
+    "electron-builder": "26.15.3",
+    "playwright": "1.63.0"
+  },
+  "build": {
+    "appId": "com.timingstudio.app",
+    "productName": "TimingStudio",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "app.js",
+      "electron-main.js",
+      "index.html",
+      "*.css",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "artifactName": "TimingStudio-${version}-portable.${ext}"
+    }
+  }
+}

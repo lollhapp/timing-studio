@@ -1,0 +1,86 @@
+.tabs-bar {
+  height: 46px;
+  flex: none;
+  display: flex;
+  align-items: end;
+  gap: 5px;
+  padding: 7px 12px 0;
+  background: #eaf0f8;
+  border-bottom: 1px solid #cfd9e7;
+}
+.tab-list {
+  display: flex;
+  align-items: end;
+  gap: 4px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.canvas-tab {
+  display: flex;
+  align-items: center;
+  min-width: 105px;
+  max-width: 190px;
+  height: 38px;
+  padding: 0 5px 0 12px;
+  border: 1px solid #d0dae8;
+  border-bottom: 0;
+  border-radius: 9px 9px 0 0;
+  background: #e0e8f4;
+  color: #566780;
+}
+.canvas-tab.active {
+  height: 40px;
+  background: #fff;
+  color: #233a5f;
+  border-color: #cfd9e7;
+  font-weight: 700;
+}
+.canvas-tab .tab-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 6px 3px;
+}
+.canvas-tab .tab-close {
+  border: 0;
+  background: transparent;
+  padding: 2px 6px;
+  font-size: 18px;
+  line-height: 1;
+  color: #8796aa;
+}
+.canvas-tab .tab-close:hover { background: #e7edf5; color: #c34551; }
+.add-tab {
+  align-self: center;
+  border: 0;
+  background: transparent;
+  font-size: 21px;
+  line-height: 1;
+  padding: 5px 10px;
+  color: #607899;
+}
+.canvas-heading { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.canvas-heading label { font-size: 12px; font-weight: 700; color: #70809b; white-space: nowrap; }
+.canvas-heading input {
+  width: 180px;
+  min-width: 80px;
+  max-width: 35vw;
+  border: 1px solid #cdd7e4;
+  border-radius: 6px;
+  padding: 6px 8px;
+  background: #fff;
+  color: #253653;
+  font-size: 13px;
+  font-weight: 600;
+}
+.canvas-toolbar #status { margin-left: 7px; white-space: nowrap; }
+@media (max-width: 650px) {
+  .canvas-toolbar { gap: 8px; }
+  .canvas-heading input { width: 130px; }
+  .canvas-toolbar #status { display: none; }
+}

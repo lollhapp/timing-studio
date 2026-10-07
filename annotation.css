@@ -1,0 +1,27 @@
+.canvas-scroll { position: relative; }
+.annotation-editor-panel {
+  position: absolute;
+  z-index: 10;
+  width: 240px;
+  padding: 6px;
+  border: 2px solid #d38c1c;
+  border-radius: 5px;
+  background: #fff8df;
+  color: #76521d;
+  box-shadow: 0 3px 12px #76521d22;
+}
+.annotation-editor {
+  display: block;
+  width: 100%;
+  min-height: 68px;
+  padding: 7px 9px;
+  border: 1px solid #e4c988;
+  background: #fffdf5;
+  color: #76521d;
+  font: 12px/18px "Segoe UI", "Microsoft YaHei", sans-serif;
+  outline: none;
+  resize: vertical;
+}
+.annotation-editor-actions { display: flex; justify-content: flex-end; gap: 6px; padding-top: 6px; }
+.annotation-editor-actions button { padding: 4px 12px; }
+#diagram:focus { outline: none; }
