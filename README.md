@@ -15,6 +15,12 @@
 
 ## 使用
 
+### Windows 可执行文件
+
+[下载 TimingStudio 1.3.1 便携版（Windows x64）](https://github.com/lollhapp/timing-studio/releases/download/v1.3.1/TimingStudio-1.3.1-portable.exe)，下载后双击运行，无需安装 Node.js。必要运行资源已封装在这个 exe 中，首次启动会先解压资源。
+
+文件大小约 100 MB；[发布页面](https://github.com/lollhapp/timing-studio/releases/tag/v1.3.1)同时提供 SHA-256 校验文件。便携版已验证启动、资源加载、视图切换与总线绘制。
+
 ### 浏览器
 
 下载或克隆本仓库后，用现代浏览器打开 `index.html` 即可。基础绘图不需要安装依赖，也不需要服务器。剪贴板能力受浏览器权限限制。
@@ -37,7 +43,7 @@ npm ci
 npm run dist:win
 ```
 
-产物位于 `dist/`。桌面程序依赖 Electron；首次安装依赖和打包需要网络。本仓库发布源码，不包含安装目录或已构建的程序。
+产物位于 `dist/`。桌面程序依赖 Electron；首次安装依赖和打包需要网络。源码树不包含安装目录，可执行文件通过 GitHub Releases 提供。
 
 ## WaveJSON 示例
 
